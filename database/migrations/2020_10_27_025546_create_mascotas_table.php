@@ -20,7 +20,7 @@ class CreateMascotasTable extends Migration
             $table->decimal('edad');
             $table->string('raza');
             $table->bigInteger('usuario_id')->unsigned();
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 
