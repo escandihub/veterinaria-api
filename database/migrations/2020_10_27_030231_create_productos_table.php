@@ -17,10 +17,10 @@ class CreateProductosTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('descripcion');
-            $table->money('precio',9,2);
-            $table->int('stock');
-            $table->bigInteger('categoria_id');
-            $table->foreign('categoria_id')->references('id')->on('categoriass')->onDelete('cascade');
+            $table->decimal('precio',9,2);
+            $table->integer('stock');
+            $table->bigInteger('categoria_id')->unsigned();
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
             // $table->timestamps();
         });
     }
