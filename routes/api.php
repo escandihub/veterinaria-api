@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\ProductoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::apiResource('horarios', HorarioController::class);
+    Route::apiResource('productos', ProductoController::class);
+    Route::apiResource('categorias', CategoriaController::class);
+    Route::apiResource('servicios', ServicioController::class);
 });

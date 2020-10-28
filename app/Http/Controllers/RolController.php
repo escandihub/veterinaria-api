@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\citas;
+use App\Models\roles;
 use Illuminate\Http\Request;
 
-class CitasController extends Controller
+class RolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class CitasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\citas  $citas
+     * @param  \App\Models\roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function show(citas $citas)
+    public function show(roles $roles)
     {
         //
     }
@@ -52,10 +52,10 @@ class CitasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\citas  $citas
+     * @param  \App\Models\roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function edit(citas $citas)
+    public function edit(roles $roles)
     {
         //
     }
@@ -64,10 +64,10 @@ class CitasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\citas  $citas
+     * @param  \App\Models\roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, citas $citas)
+    public function update(Request $request, roles $roles)
     {
         //
     }
@@ -75,10 +75,10 @@ class CitasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\citas  $citas
+     * @param  \App\Models\roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(citas $citas)
+    public function destroy(roles $roles)
     {
         //
     }

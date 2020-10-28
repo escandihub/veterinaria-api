@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\roles;
+use App\Models\mascotas;
 use Illuminate\Http\Request;
 
-class RolesController extends Controller
+class MascotaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class RolesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\roles  $roles
+     * @param  \App\Models\mascotas  $mascotas
      * @return \Illuminate\Http\Response
      */
-    public function show(roles $roles)
+    public function show(mascotas $mascotas)
     {
         //
     }
@@ -52,10 +52,10 @@ class RolesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\roles  $roles
+     * @param  \App\Models\mascotas  $mascotas
      * @return \Illuminate\Http\Response
      */
-    public function edit(roles $roles)
+    public function edit(mascotas $mascotas)
     {
         //
     }
@@ -64,10 +64,10 @@ class RolesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\roles  $roles
+     * @param  \App\Models\mascotas  $mascotas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, roles $roles)
+    public function update(Request $request, mascotas $mascotas)
     {
         //
     }
@@ -75,10 +75,10 @@ class RolesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\roles  $roles
+     * @param  \App\Models\mascotas  $mascotas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(roles $roles)
+    public function destroy(mascotas $mascotas)
     {
         //
     }

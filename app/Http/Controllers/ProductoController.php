@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductoRequest;
+use App\Models\Categoria;
 use App\Models\producto;
 use Illuminate\Http\Request;
 
@@ -15,17 +17,15 @@ class ProductoController extends Controller
     public function index()
     {
         //
+        $productos = Producto::all();
+        return response()->json($productos, 200);
     }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+     */   
 
     /**
      * Store a newly created resource in storage.
@@ -33,9 +33,13 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductoRequest $request)
     {
-        //
+        $producto = new Producto();
+        $producto->fill($request->all());
+        $producto->categoria()->associate(Categoria::buscar($request->categoria)->first());
+        $producto->save();        
+        return response()->json(['message'=>'Producto agregado'], 201);
     }
 
     /**
@@ -47,19 +51,9 @@ class ProductoController extends Controller
     public function show(producto $producto)
     {
         //
+        return response()->json($producto, 200);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\producto  $producto
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(producto $producto)
-    {
-        //
-    }
-
+  
     /**
      * Update the specified resource in storage.
      *
@@ -67,9 +61,13 @@ class ProductoController extends Controller
      * @param  \App\Models\producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, producto $producto)
+    public function update(ProductoRequest $request, producto $producto)
     {
         //
+        $producto->fill($request->all());
+        $producto->categoria()->associate(Categoria::buscar($request->categoria)->first());
+        $producto->save();
+        return response()->json(['message' => 'Producto actualizado'], 200);
     }
 
     /**
@@ -81,5 +79,7 @@ class ProductoController extends Controller
     public function destroy(producto $producto)
     {
         //
+        $producto->delete();
+        return response()->json(['message' => 'Horario eliminado'], 201);
     }
 }

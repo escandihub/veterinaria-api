@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\mascotas;
+use App\Models\citas;
 use Illuminate\Http\Request;
 
-class MascotasController extends Controller
+class CitaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class MascotasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\mascotas  $mascotas
+     * @param  \App\Models\citas  $citas
      * @return \Illuminate\Http\Response
      */
-    public function show(mascotas $mascotas)
+    public function show(citas $citas)
     {
         //
     }
@@ -52,10 +52,10 @@ class MascotasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\mascotas  $mascotas
+     * @param  \App\Models\citas  $citas
      * @return \Illuminate\Http\Response
      */
-    public function edit(mascotas $mascotas)
+    public function edit(citas $citas)
     {
         //
     }
@@ -64,10 +64,10 @@ class MascotasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\mascotas  $mascotas
+     * @param  \App\Models\citas  $citas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, mascotas $mascotas)
+    public function update(Request $request, citas $citas)
     {
         //
     }
@@ -75,10 +75,10 @@ class MascotasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\mascotas  $mascotas
+     * @param  \App\Models\citas  $citas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(mascotas $mascotas)
+    public function destroy(citas $citas)
     {
         //
     }

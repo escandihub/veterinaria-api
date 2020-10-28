@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Horario;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Requests\HorarioRequest;
 
 class HorarioController extends Controller
 {
@@ -14,17 +16,8 @@ class HorarioController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $horarios = Horario::all();
+        return response()->json($horarios, 200);
     }
 
     /**
@@ -33,9 +26,15 @@ class HorarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HorarioRequest $request)
     {
         //
+        $horario = new Horario();
+        // Horario::create($request->all());
+        $horario->fill($request->all());
+        $horario->uuid = Str::uuid();
+        $horario->save();
+        return response()->json(['message' => 'Horario guardado'], 201);
     }
 
     /**
@@ -47,18 +46,10 @@ class HorarioController extends Controller
     public function show(Horario $horario)
     {
         //
+        return response()->json($horario, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Horario  $horario
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Horario $horario)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -67,9 +58,12 @@ class HorarioController extends Controller
      * @param  \App\Models\Horario  $horario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Horario $horario)
+    public function update(HorarioRequest $request, Horario $horario)
     {
         //
+        $horario->fill($request->all());
+        $horario->save();
+        return response()->json(['message' => 'Horario actualizado'], 200);
     }
 
     /**
@@ -81,5 +75,7 @@ class HorarioController extends Controller
     public function destroy(Horario $horario)
     {
         //
+        $horario->delete();
+        return response()->json(['message' => 'Horario eliminado'], 201);
     }
 }

@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\categoria;
+use App\Http\Requests\CategoriaRequest;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -14,28 +15,22 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categorias = Categoria::all();
+        return response()->json($categorias, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+  
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoriaRequest $request)
     {
         //
+        Categoria::create($request->all());
+        return response()->json(['message'=>'Categoria creada'], 201);
     }
 
     /**
@@ -47,19 +42,9 @@ class CategoriaController extends Controller
     public function show(categoria $categoria)
     {
         //
+        return response()->json($categoria, 200);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\categoria  $categoria
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(categoria $categoria)
-    {
-        //
-    }
-
+  
     /**
      * Update the specified resource in storage.
      *
@@ -67,9 +52,12 @@ class CategoriaController extends Controller
      * @param  \App\Models\categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, categoria $categoria)
+    public function update(CategoriaRequest $request, categoria $categoria)
     {
         //
+        $categoria->fill($request->all());
+        $categoria->save();
+        return response()->json(['message'=>'Categoria actualizada'], 200);
     }
 
     /**
@@ -81,5 +69,7 @@ class CategoriaController extends Controller
     public function destroy(categoria $categoria)
     {
         //
+        $categoria->delete();
+        return response()->json(['message'=>'Categoria eliminada'], 200);
     }
 }

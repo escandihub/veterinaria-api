@@ -8,10 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $fillable = [
-
+        'sku',
+        'nombre',
+        'descripcion',
+        'precio',
+        'stock',
     ];
-    protected $hidden = [
+    protected $hidden = ['id'];
 
-    ];
+    public function getRouteKeyName()
+    {
+        return 'sku';
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
+    }
 }
